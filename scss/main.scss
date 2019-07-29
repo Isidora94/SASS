@@ -1,0 +1,162 @@
+$font-stack: Roboto, sans-serif;
+$base-letter-color: #999797;
+$main_blue_color: #2196f3;
+
+@mixin form-groups{
+	position: relative;
+	margin-bottom: 30px;
+	margin-top: 20px;
+}
+
+body{
+	font-family: $font-stack;
+
+	header{
+		background-color: $main_blue_color; 
+
+		.flex-shrink-1{
+			position: relative;
+			width: 60px;
+
+			.chart{
+				position: absolute;
+				top: 50%;
+				left: 70%;
+				transform: translate(-50%, -50%);
+
+				.number{
+					position: absolute;
+					top: 20%;
+					left: 20%;
+					color: #fff;
+
+					span{
+						margin-left: 5px;
+					}
+				}
+			}
+		}
+
+		.w-100{
+			color: #fff;
+			margin-bottom: 30px;
+			margin-top: 30px;
+		}
+
+		p{
+			margin-bottom: 0;
+
+			&:first-child{
+				font-size: 15px;
+			}
+			&:nth-child(2){
+				font-size: 20px;
+			}
+		}
+
+		canvas{
+			height: 40px !important;
+			width: 40px !important;
+		}
+
+	}
+
+	form{
+
+		height: 100%;
+		margin-top: 40px;
+		overflow: hidden;
+
+		.form-group{
+			@include form-groups;
+
+			input{
+				// padding-top: 20px;
+				border: none;
+				color: #828282;
+
+				&:focus{
+					box-shadow: none;
+					color: #74bcf8 !important;
+				}
+
+				&:focus + label::after,
+				&:valid + label::after{
+					transform: translateX(0%);
+				}
+			}
+
+			label{
+				color: $base-letter-color;
+				position: absolute;
+				bottom: -5px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				border-bottom: 1px solid $base-letter-color;
+
+				&::after{
+					content: "";
+					position: absolute;
+					left: 0px;
+					bottom: -2px;
+					height: 100%;
+					width: 100%;
+					border-bottom: 2px solid #39a4f5;
+					transform: translateX(-100%);
+					transition: all 0.3s ease;
+				}
+
+				.content-name{
+					position: absolute;
+					bottom: 5px;
+					left: 0px;
+					transition: all 0.3s ease;
+					font-size: 12px;
+				}
+			}
+
+			input:focus + label .content-name,
+			input:valid + label .content-name{
+				transform: translateY(-150%);
+			}
+		}
+		
+		.check{
+			color: $base-letter-color;
+		}
+
+		.custom-checkbox{
+			margin: 10px;
+
+			// stylish/change bootsrap's default checkbox styles
+			.custom-control-input ~ .custom-control-label::before {
+				background-color: #fafafa;
+				border-radius: 50%;
+			}
+
+			.custom-control-input:checked ~ .custom-control-label::before {
+				background-color: #46d5b5;
+				border-radius: 50%;
+				transition: all 1s ease-in-out;
+			}
+
+		}
+
+		input{
+
+			&[type="submit"]{
+				display: block;
+				margin: 0 auto;
+				margin-top: 15px;
+				background-color: $main_blue_color;
+				color: #fff;
+				border-radius: 5px;
+			}
+
+		}
+	}
+
+
+}
